@@ -1,0 +1,340 @@
+
+
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #d1d1d1;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #c4c4c4;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #dbdbdb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(177, 177, 177, 0.815);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  & button {
+    outline: none;
+  }
+  
+}
+
+.FootballContainer {
+  background-color: rgb(236, 236, 236);
+  width: 80%;
+  /* min-height: 85%; */
+  height: 90%;
+  border-radius: 16px;
+  -webkit-box-shadow: 2px 7px 23px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 7px 23px -8px rgba(0,0,0,0.75);
+  box-shadow: 2px 7px 23px -8px rgba(0,0,0,0.75);
+}
+
+.FootbalHeader {
+  font-family: "Rhodium Libre", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid grey;
+  border-radius: 16px 16px 0px 0px;
+  align-items: center;
+  /* min-height: 120px; */
+
+  & img {
+    width: 128px;
+    height: 128px;
+  }
+
+  & .headerOptions {
+    margin-right: 12px;
+    display: flex;
+    gap: 4px;
+  }
+
+  & .headerDetails {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+  }
+}
+
+.DetailsList {
+  display: flex;
+  flex-direction: column;
+  max-height: 83%;
+  overflow-y: scroll;
+  max-width: 100%;
+}
+
+.leagueDetail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: white;
+  transition: opacity 0.6s ease;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 4px;
+  & button {
+    outline: none;
+  }
+
+  & img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  & .detailText {
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.teamDetail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: white;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 4px;
+  transition: opacity 0.6s ease;
+  & button {
+    outline: none;
+  }
+
+  & img {
+    width: 86px;
+    height: 86px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: row;
+    align-items:baseline;
+    gap: 8px;
+  }
+
+  & .teamText {
+    min-width: 410px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.DetailsList:hover > :not(:hover){
+  opacity: 0.5;
+}
+
+.playersDetail {
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 12px;
+  border-radius: 8px;
+
+}
+
+.teamHeader {
+  background-color: white;
+  border-radius: 12px;
+  margin: 12px;
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+}
+
+.teamTitle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+}
+
+.titleChild {
+  display: flex;
+  align-items: center;
+  justify-content:left;
+  z-index: 4;
+  position: relative;
+  flex-direction: column;
+  top: 95px;
+  left:  -40px;
+  text-align: left;
+  & p,h1,h2,h3,h4,h5 {
+    min-width: 250px;
+    max-width: 250px;
+    font-size: 10px;
+    color: white;
+  }
+}
+
+.StadiumName {
+  position: absolute;
+  width: 300px;
+  object-fit: cover;
+  height: 150px;
+  right: 10px;
+  top: 12px;
+  border-radius: 12px;
+  z-index: 1;
+
+}
+
+.playerDetail {
+  background-color: white;
+  margin: 12px;
+  border-radius: 12px;
+  & img {
+    margin-left: 10px;
+    border-radius: 12px;
+  }
+
+  & .playerDetailHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    padding: 16px;
+
+    & .playerInfo {
+      width: 85%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    & .playerName {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      & .firstLastName{
+        display: flex;
+        gap: 12px;
+      }
+
+      & .firstLastName{
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.playerWH {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 12px;
+  justify-content: center;
+}
+
+.playerWeight {
+  display: flex;
+  flex-direction: row;
+
+  & img {
+    width: 32px;
+  }
+}
+
+.playerHeight {
+  display: flex;
+  flex-direction: row;
+
+  & img {
+    width: 32px;
+  }
+}
+
+.playerCountry {
+  display: flex;
+  flex-direction: row;
+
+  & img {
+    width: 32px;
+  }
+}
+
+.optionsButton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  & button {
+    background-color: #ececec;
+    width: 100px;
+    font-size: 10px;
+    border-radius: 32px 12px 32px 12px;
+  }
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+}
+
+.playerDetailTable {
+  max-height: 500px;
+  overflow-y: scroll;
+}
