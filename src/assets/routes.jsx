@@ -5,6 +5,11 @@ import MainLayout from "../assets/layouts/mainLayouts"
 import Team from "../assets/page/team"
 import Player from "../assets/page/player"
 import Coach from "../assets/page/coach"
+import LastMatch from "../assets/page/lastMatch";
+import NextMatch from "../assets/page/nextMatch"
+import AllMatch from "../assets/page/allMatch";
+import AllLeague from "../assets/page/allLeagues";
+import LeagueArrangement from "../assets/page/leagueArramgement";
 
 export const routes = createBrowserRouter([
     {
@@ -33,7 +38,23 @@ export const routes = createBrowserRouter([
             },
             { 
                 path: "lastMatch/:id/:name/:teamID", 
-                element: <Coach /> 
+                element: <LastMatch /> 
+            },
+            { 
+                path: "nextMatch/:id/:name/:teamID", 
+                element: <NextMatch /> 
+            },
+            { 
+                path: "allMatch/leagues/:id", 
+                element: <AllMatch /> 
+            },
+            { 
+                path: "allLeague", 
+                element: <AllLeague /> 
+            },
+            { 
+                path: "legueArrangement/:id", 
+                element: <LeagueArrangement /> 
             }
         ]
     }

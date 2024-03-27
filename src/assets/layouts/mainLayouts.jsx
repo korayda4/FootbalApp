@@ -20,11 +20,11 @@ export default function MainLayout() {
                         </div>
                     </div>
                         <div className="headerOptions">
-                        <Button type="text">Oyuncu Ara</Button>
-                        <Button type="text">Lig Ara</Button>
-                        <Button type="text">Ülke Ligleri</Button>
-                        <Button type="text">Maç Sonuçları</Button>
-                        <Button type="text">Sıralama</Button>
+                            <Link to={"/allLeague"}><Button type="text">Tüm Ligler</Button></Link>
+                            <Link to={`/allMatch/leagues/${id != undefined ? id:"203"}`}><Button type="text">Maç Sonuçları</Button></Link>
+                            <Link to={`/legueArrangement/${id != undefined ? id:"203"}`}><Button type="text">Lig Sıralaması</Button></Link>
+                            {/* <Button type="text">Takım Ara</Button>
+                            <Button type="text">Oyuncu Ara</Button> */}
                         
                         </div>
                     </div>

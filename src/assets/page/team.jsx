@@ -265,7 +265,6 @@ function Team () {
                   <div className="optionsButton">
                     <Link to={`/lastMatch/${id}/${name}/${teamID}`}><button>Son 20 Maçı Görüntüle</button> </Link> 
                     <Link to={`/nextMatch/${id}/${name}/${teamID}`}><button>Gelecek 20 Maçı Görüntüle</button> </Link>     
-                    <Link to={`/transfers/${id}/${name}/${teamID}`}><button>Son 20 Transferi Görüntüle</button> </Link> 
                   </div>
                   <div className="teamTitle2"> 
                    

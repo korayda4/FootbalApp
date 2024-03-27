@@ -4,16 +4,11 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Spin,Pagination , Space, Table, Tag } from 'antd';
 import { Link } from 'react-router-dom';
 
-const lastMatch = () => {
+const AllMatch = () => {
     const [data, setData] = useState(null);
-    const [data2 , setData2] = useState(null);
-    const [standings ,setStandings] = useState(null);
     const [country, setCountry] = useState( "Turkey");
     const { id , get , name ,teamID } = useParams();
-   
-    const teamStandings = `https://api-football-v1.p.rapidapi.com/v3/standings?season=2023&league=${id}&team=${teamID}`
-    const teamInfoURL = `https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${id}&season=2023&team=${teamID}`
-    const urlFixtures = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${id}&season=2023&team=${teamID}&next=20`;
+    const urlAllMatch = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${id}&season=2023`;
     const options = {
         method: 'GET',
         headers: {
@@ -21,7 +16,6 @@ const lastMatch = () => {
           'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         }
     };
-
     const loadingDiv = (
     <div className='loading'>
         <Spin
@@ -37,9 +31,9 @@ const lastMatch = () => {
         </div>)
 
     useEffect(() => {
-        const getLastMatch = async () => {
+        const getAllMatch = async () => {
             try {
-                const response = await fetch(urlFixtures, options);
+                const response = await fetch(urlAllMatch, options);
                 const result = await response.json();
                 setData(result)
                 console.log(result);
@@ -48,55 +42,24 @@ const lastMatch = () => {
             }
         };
 
-        const getTeamInfo = async () => {
-            try {
-                const response = await fetch(teamInfoURL, options);
-                const result = await response.json();
-                setData2(result)
-                console.log(result);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        const getTeamStandings = async () => {
-            try {
-                const response = await fetch(teamStandings, options);
-                const result = await response.json();
-                setStandings(result)
-                console.log(result);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-          
-        getTeamStandings()
-        getTeamInfo()  
-        getLastMatch();
+        getAllMatch();
     },[country]);
 
     return (
         <>
-            <div className="lastMatchs">
-                <div className="lastMatchHeader">
-                    <div className="name-logo">
-                        <img src={data2 ? data2.response.team.logo:loadingDiv} alt="" />
-                        <h1>{name} Gelecek maçlar</h1> 
-                    </div>
-                    <div className="infoHead">
-                        <h2>{standings ? standings.response[0].league.standings[0][0].points:loadingDiv} Puan ile {standings ? standings.response[0].league.standings[0][0].rank:loadingDiv}. Sırada</h2>
-                        <p>{standings ? standings.response[0].league.standings[0][0].all.win:loadingDiv} Maç Kazandı</p>
-                        <p>{standings ? standings.response[0].league.standings[0][0].all.lose:loadingDiv} Maç Kaybetti</p>
-                        <p>{standings ? standings.response[0].league.standings[0][0].all.draw:loadingDiv} Maç berabere Kaldı</p>
-                    </div>
-                </div>
+            <div className="allMatchs">
+                <header style={{width:"90%",padding:"16px",backgroundColor:"white",margin:"12px",textAlign:"center",borderRadius:"12px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                    <h1>TÜM MAÇ SKORLARI</h1>
+                    <img style={{width:"64px"}} src={data ? data.response[0].league.logo:null} alt="LeagueLogo" />
+                </header>
                 {data ? (data.response.map((x,i) => {
                     return(
                         <div key={i} className={`match ${x.teams.home.winner}`} >
+                            
                             <div className='dateTime'>
                                 <h4>{x.fixture.date.slice(0,10)}</h4>
                             </div>
-                            <div className="NextmatchLogo">
+                            <div className="matchLogo">
                                 <div style={{display:"flex",alignItems:"center",gap:"12px"}}>
                                     <img src={x.league.logo} alt="LeagueLogo" />
                                     <h5>90 DK</h5>
@@ -110,6 +73,7 @@ const lastMatch = () => {
                                 </div>
                                 <div className="score">
                                     <h1>{x.goals?.home}</h1>
+                                    <h1>:</h1>
                                     <h1>{x.goals?.away}</h1>
                                 </div>
                                 <div className="away">
@@ -126,4 +90,4 @@ const lastMatch = () => {
     )
 }
 
-export default lastMatch
+export default AllMatch
